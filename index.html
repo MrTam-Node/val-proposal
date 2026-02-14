@@ -109,6 +109,12 @@
         to { opacity: 1; }
     }
 
+
+    #spotifyPlaylist,
+    #applePlaylist {
+        max-height: 420px;
+        overflow-y: auto;
+    }
 </style>
 </head>
 
@@ -132,14 +138,17 @@
 
 <div id="musicChoice" style="margin-top: 20px; display: none; flex-direction: column; align-items: center; gap: 10px;">
     <h4 style="color:white;">Choose your music platform 🎵</h4>
-    <h4 style="color:white;">Playlist you would love 🎶</h4>
     <div style="display:flex; gap:10px;">
         <button id="spotifyBtn" style="padding:10px 20px; border-radius:10px; border:none; cursor:pointer; background:#1DB954; color:white;">Spotify</button>
         <button id="appleBtn" style="padding:10px 20px; border-radius:10px; border:none; cursor:pointer; background:#FA57C1; color:white;">Apple Music</button>
     </div>
 
  <!--   <div id="playlist" style="margin-top:30px; display:none; flex-direction:column; gap:15px; align-items:center;">
-         <h4 style="color:white;">Playlist you would love 🎶</h4> -->
+        <h4 style="color:white;">Playlist you would love 🎶</h4> -->
+
+        <h4 id="playlistTitle" style="color:white; margin-top:25px; display:none;">
+            Playlist you would love 🎶
+        </h4>
 
         <!-- Spotify Playlist -->
         <div id="spotifyPlaylist" style="display:none; flex-direction:column; gap:15px; align-items:center;">
@@ -352,18 +361,26 @@ const appleBtn = document.getElementById("appleBtn");
 const spotifyPlaylist = document.getElementById("spotifyPlaylist");
 const applePlaylist = document.getElementById("applePlaylist");
 
+const playlistTitle = document.getElementById("playlistTitle");
+
 spotifyBtn.addEventListener("click", () => {
+    playlistTitle.style.display = "block";
+
     spotifyPlaylist.style.display = "flex";
     spotifyPlaylist.classList.add("fade-in");
+
     applePlaylist.style.display = "none";
-     fadeOutMusic(); // fade Bensound immediately
+    fadeOutMusic();
 });
 
 appleBtn.addEventListener("click", () => {
+    playlistTitle.style.display = "block";
+
     applePlaylist.style.display = "flex";
     applePlaylist.classList.add("fade-in");
+
     spotifyPlaylist.style.display = "none";
-     fadeOutMusic(); // fade Bensound immediately
+    fadeOutMusic();
 });
 
 
